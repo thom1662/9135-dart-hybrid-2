@@ -2,8 +2,6 @@ import 'dart:io';
 import 'dart:math';
 
 class Lucky {
-  String? max = Platform.environment['MAX'];
-  String? min = Platform.environment['MIN'];
 
   late int random;
   late int minNum;
@@ -11,12 +9,19 @@ class Lucky {
 
   Lucky() {
     //when the class is instantiated, do this:
+  String? max = Platform.environment['MAX'];
+  String? min = Platform.environment['MIN'];
 
-    if (min != null && max != null) {
-      minNum = int.parse(min!);
-      maxNum = int.parse(max!);
-      random = Random().nextInt(maxNum) + minNum;
-    }
+    //if the environment variable is not set, use default values
+    minNum = int.parse(min ?? '1');
+    maxNum = int.parse(max ?? '10');
+    random = Random().nextInt(maxNum - minNum + 1) + minNum;
+    //w/o this calc range went up to 109; now 100 - 10 + 1 = 91 + 10 = 101 to make inclusive
+    
     }
   }
 
+
+//try later to do w/o unwrapping and combining the two lines
+    // minNum = int.tryParse(Platform.environment['MIN'] ?? '1') ?? 1;
+    // maxNum = int.tryParse(Platform.environment['MAX'] ?? '10') ?? 10;
