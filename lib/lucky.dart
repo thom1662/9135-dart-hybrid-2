@@ -8,7 +8,7 @@ class Lucky {
   late int maxNum;
 
   Lucky() {
-    //when the class is instantiated, do this:
+
   String? max = Platform.environment['MAX'];
   String? min = Platform.environment['MIN'];
 
@@ -20,8 +20,3 @@ class Lucky {
     
     }
   }
-
-
-//try later to do w/o unwrapping and combining the two lines
-    // minNum = int.tryParse(Platform.environment['MIN'] ?? '1') ?? 1;
-    // maxNum = int.tryParse(Platform.environment['MAX'] ?? '10') ?? 10;
