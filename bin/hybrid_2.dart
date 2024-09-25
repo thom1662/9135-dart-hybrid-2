@@ -10,4 +10,5 @@ void main(List<String> arguments) {
     print('Hello, $capName. Your lucky number is: ${getNum.random}');
   }
 
+
 }
